@@ -5,7 +5,7 @@ import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognitio
 import { ReactMouseEvent } from '@/types'
 import 'regenerator-runtime/runtime.js'
 
-const Dictaphone = ({ speechDataCallback }) => {
+const VoiceRecognition = ({ speechDataCallback }) => {
   const { transcript, resetTranscript } = useSpeechRecognition()
 
   const [state, setState] = useState(false)
@@ -44,4 +44,4 @@ const Dictaphone = ({ speechDataCallback }) => {
     </div>
   )
 }
-export default Dictaphone
+export default VoiceRecognition
