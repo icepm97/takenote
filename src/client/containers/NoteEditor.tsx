@@ -46,7 +46,7 @@ export const NoteEditor: React.FC = () => {
   }
 
   const onSpeechData = (speechData: string) => {
-    editorInstance.replaceSelection(speechData)
+    editorInstance?.replaceSelection(speechData)
     console.log("onSpeechData")
     console.log(speechData)
   }
