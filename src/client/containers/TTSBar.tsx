@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from 'react'
 import { Pause, Play, Square } from 'react-feather'
+// @ts-ignore
 import Speech from 'speak-tts'
 import removeMd from 'remove-markdown'
 
@@ -16,7 +17,7 @@ const initSpeechTTS = () => {
     'voice': 'Google UK English Male',
     'splitSentences': true,
     'listeners': {
-      'onvoiceschanged': (voices) => {
+      'onvoiceschanged': (voices: any) => {
         console.log("Event voiceschanged", voices)
       }
     }
@@ -32,7 +33,7 @@ const initSpeechTTS = () => {
 
 
 export interface TTSBarProps {
-  text: String
+  text: string
 }
 
 enum Status {

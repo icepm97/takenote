@@ -5,7 +5,7 @@ import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognitio
 import { ReactMouseEvent } from '@/types'
 import 'regenerator-runtime/runtime.js'
 
-const VoiceRecognition = ({ speechDataCallback }) => {
+const VoiceRecognition = ({ speechDataCallback } : { speechDataCallback: any}) => {
   const { transcript, resetTranscript } = useSpeechRecognition()
 
   const [state, setState] = useState(false)
