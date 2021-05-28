@@ -17,6 +17,7 @@ import 'codemirror/theme/base16-light.css'
 import 'codemirror/mode/gfm/gfm'
 import 'codemirror/addon/selection/active-line'
 import 'codemirror/addon/scroll/scrollpastend'
+import Dictaphone from '@/components/Editor/VoiceRecognition'
 
 export const NoteEditor: React.FC = () => {
   // ===========================================================================
@@ -93,8 +94,10 @@ export const NoteEditor: React.FC = () => {
               ch: Math.max(anchor.ch, head.ch),
             })
           })
-        }}
-      />
+        }} 
+        
+      ></CodeMirror>
+      
     )
   }
 
