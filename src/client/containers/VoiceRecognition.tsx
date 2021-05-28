@@ -1,27 +1,44 @@
-import { ReactMouseEvent } from '@/types'
-import React from 'react'
+import React, { useState } from 'react'
+import { Mic, MicOff } from 'react-feather'
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
-import "regenerator-runtime/runtime.js";
+
+import { ReactMouseEvent } from '@/types'
+import 'regenerator-runtime/runtime.js'
 
 const Dictaphone = ({ speechDataCallback }) => {
   const { transcript, resetTranscript } = useSpeechRecognition()
+
+  const [state, setState] = useState(false)
 
   if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
     return null
   }
 
   return (
-    <div>
-      <button onClick={async (event: React.MouseEvent<HTMLButtonElement>) => {
-        await SpeechRecognition.startListening()
-      }}>Start</button>
-      <button onClick={async (event: React.MouseEvent<HTMLButtonElement>) => {
-        SpeechRecognition.stopListening()
-        console.log(transcript)
-        speechDataCallback(transcript)
-      }}>Stop</button>
-      <button onClick={resetTranscript}>Reset</button>
-      <p>{transcript}</p>
+    <div className="dictaphone">
+      {!state ? (
+        <button
+          onClick={async (event: React.MouseEvent<HTMLButtonElement>) => {
+            setState(true)
+            await SpeechRecognition.startListening()
+          }}
+        >
+          <Mic size={18} />
+        </button>
+      ) : (
+        <button
+          onClick={async (event: React.MouseEvent<HTMLButtonElement>) => {
+            SpeechRecognition.stopListening()
+            console.log(transcript)
+            speechDataCallback(transcript)
+            resetTranscript()
+            setState(false)
+          }}
+        >
+          <MicOff size={18} />
+        </button>
+      )}
+      <p className="transcript">{transcript}</p>
     </div>
   )
 }
