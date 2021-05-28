@@ -27,7 +27,6 @@ import { toggleFavoriteNotes, toggleTrashNotes } from '@/slices/note'
 import { getCategories, getNotes, getSync, getSettings } from '@/selectors'
 import { downloadNotes, isDraftNote, getShortUuid, copyToClipboard } from '@/utils/helpers'
 import { sync } from '@/slices/sync'
-import Dictaphone from '@/components/Editor/VoiceRecognition'
 
 export const NoteMenuBar = () => {
   // ===========================================================================
@@ -142,9 +141,7 @@ export const NoteMenuBar = () => {
       ) : (
         <div />
       )}
-      <nav>
-        <Dictaphone></Dictaphone>
-      </nav>
+     
       <nav>
         <LastSyncedNotification datetime={lastSynced} pending={pendingSync} syncing={syncing} />
         <button

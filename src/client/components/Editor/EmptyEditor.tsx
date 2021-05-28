@@ -1,5 +1,4 @@
 import React from 'react'
-import Dictaphone from './VoiceRecognition'
 
 export const EmptyEditor: React.FC = () => {
   return (
@@ -11,7 +10,6 @@ export const EmptyEditor: React.FC = () => {
         <p>
           <kbd>CTRL</kbd> + <kbd>ALT</kbd> + <kbd>N</kbd>
         </p>
-      <Dictaphone></Dictaphone>
       </div>
     </div>
   )

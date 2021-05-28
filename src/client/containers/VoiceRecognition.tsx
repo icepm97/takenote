@@ -3,7 +3,7 @@ import React from 'react'
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
 import "regenerator-runtime/runtime.js";
 
-const Dictaphone = () => {
+const Dictaphone = ({ speechDataCallback }) => {
   const { transcript, resetTranscript } = useSpeechRecognition()
 
   if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
@@ -18,6 +18,7 @@ const Dictaphone = () => {
       <button onClick={async (event: React.MouseEvent<HTMLButtonElement>) => {
         SpeechRecognition.stopListening()
         console.log(transcript)
+        speechDataCallback(transcript)
       }}>Stop</button>
       <button onClick={resetTranscript}>Reset</button>
       <p>{transcript}</p>
