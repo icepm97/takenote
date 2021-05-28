@@ -22,6 +22,7 @@ export const AddCategoryForm: React.FC<AddCategoryFormProps> = ({
 }) => {
   return (
     <form data-testid={dataTestID} className="category-form" onSubmit={submitHandler}>
+      <div className="flex">
       <input
         data-testid={TestID.NEW_CATEGORY_INPUT}
         aria-label="Category name"
@@ -40,6 +41,8 @@ export const AddCategoryForm: React.FC<AddCategoryFormProps> = ({
           }
         }}
       />
+      <input type="submit" value="Add" style={{marginBottom:"8px", marginTop:"8px"}}/>
+      </div>
     </form>
   )
 }
