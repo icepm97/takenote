@@ -2,6 +2,7 @@ import dayjs from 'dayjs'
 import React, { useState } from 'react'
 import { Controlled as CodeMirror } from 'react-codemirror2'
 import { useDispatch, useSelector } from 'react-redux'
+import { Editor } from 'codemirror'
 
 import { getActiveNote } from '@/utils/helpers'
 import { updateNote } from '@/slices/note'
@@ -17,9 +18,7 @@ import 'codemirror/theme/base16-light.css'
 import 'codemirror/mode/gfm/gfm'
 import 'codemirror/addon/selection/active-line'
 import 'codemirror/addon/scroll/scrollpastend'
-import Dictaphone from './VoiceRecognition'
-import { Editor } from 'codemirror'
-
+import VoiceRecognition from './VoiceRecognition'
 
 export const NoteEditor: React.FC = () => {
   // ===========================================================================
@@ -47,7 +46,7 @@ export const NoteEditor: React.FC = () => {
 
   const onSpeechData = (speechData: string) => {
     editorInstance?.replaceSelection(speechData)
-    console.log("onSpeechData")
+    console.log('onSpeechData')
     console.log(speechData)
   }
 
@@ -68,7 +67,7 @@ export const NoteEditor: React.FC = () => {
 
     return (
       <React.Fragment>
-        <Dictaphone speechDataCallback={onSpeechData}></Dictaphone>
+        <VoiceRecognition speechDataCallback={onSpeechData}></VoiceRecognition>
 
         <CodeMirror
           data-testid="codemirror-editor"
@@ -77,7 +76,7 @@ export const NoteEditor: React.FC = () => {
           options={codeMirrorOptions}
           editorDidMount={(editor) => {
             setEditorInstance(editor)
-            console.log("editor mounted")
+            console.log('editor mounted')
             setTimeout(() => {
               editor.focus()
             }, 0)
@@ -110,11 +109,8 @@ export const NoteEditor: React.FC = () => {
               })
             })
           }}
-
         ></CodeMirror>
       </React.Fragment>
-
-
     )
   }
 
