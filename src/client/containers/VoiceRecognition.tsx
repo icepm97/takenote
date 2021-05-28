@@ -18,15 +18,17 @@ const Dictaphone = ({ speechDataCallback }) => {
     <div className="dictaphone">
       {!state ? (
         <button
+          className="record-button"
           onClick={async (event: React.MouseEvent<HTMLButtonElement>) => {
             setState(true)
-            await SpeechRecognition.startListening()
+            await SpeechRecognition.startListening({ continuous: true })
           }}
         >
           <Mic size={18} />
         </button>
       ) : (
         <button
+          className="record-button"
           onClick={async (event: React.MouseEvent<HTMLButtonElement>) => {
             SpeechRecognition.stopListening()
             console.log(transcript)
