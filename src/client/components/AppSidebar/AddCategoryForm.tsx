@@ -41,7 +41,7 @@ export const AddCategoryForm: React.FC<AddCategoryFormProps> = ({
           }
         }}
       />
-      <input type="submit" value="Add" style={{marginBottom:"8px", marginTop:"8px"}}/>
+      <input type="submit" value="+" style={{marginBottom:"8px", marginTop:"8px", fontSize:"20px"}}/>
       </div>
     </form>
   )
